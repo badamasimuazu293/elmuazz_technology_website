@@ -1,0 +1,76 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+
+<div style="max-width: 900px; margin: 30px auto;">
+
+    <h1>
+        Reply to {{ inquiry.name }}
+    </h1>
+
+    <div
+        style="
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        "
+    >
+
+        <p>
+            <strong>Email:</strong>
+            {{ inquiry.email }}
+        </p>
+
+        <p>
+            <strong>Service:</strong>
+            {{ inquiry.get_service_display }}
+        </p>
+
+        <p>
+            <strong>Budget:</strong>
+            {% if inquiry.budget %}
+                {{ inquiry.get_budget_display }}
+            {% else %}
+                Not specified
+            {% endif %}
+        </p>
+
+        <hr>
+
+        <p>
+            <strong>Customer Message:</strong>
+        </p>
+
+        <p>
+            {{ inquiry.message|linebreaks }}
+        </p>
+
+    </div>
+
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button
+            type="submit"
+            class="default"
+        >
+            Send Reply
+        </button>
+
+        <a
+            href="{% url 'admin:core_contactinquiry_changelist' %}"
+            style="margin-left: 15px;"
+        >
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}

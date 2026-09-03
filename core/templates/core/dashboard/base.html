@@ -1,0 +1,1389 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+            Dashboard | Elmuazz Technology
+        {% endblock %}
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =====================================================
+           DASHBOARD LAYOUT
+        ===================================================== */
+
+        .dashboard {
+            min-height: 100vh;
+            display: flex;
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+            width: 250px;
+
+            background: #0b3d91;
+            color: white;
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 18px 14px;
+
+            z-index: 1000;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 5px 8px 20px;
+
+            border-bottom:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+
+            background: white;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+        }
+
+        .brand-logo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+        }
+
+        .brand-fallback {
+            color: #0b3d91;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .brand-text {
+            min-width: 0;
+        }
+
+        .brand-text strong {
+            display: block;
+
+            font-size: 14px;
+            line-height: 1.2;
+
+            white-space: nowrap;
+        }
+
+        .brand-text span {
+            display: block;
+
+            font-size: 10px;
+
+            opacity: 0.7;
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           SIDEBAR MENU
+        ===================================================== */
+
+        .sidebar-menu {
+            flex: 1;
+
+            padding-top: 24px;
+
+            overflow-y: auto;
+        }
+
+        .menu-section {
+            margin-bottom: 24px;
+        }
+
+        .menu-title {
+            padding: 0 10px 10px;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.08em;
+
+            color:
+                rgba(255, 255, 255, 0.5);
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+
+            min-height: 42px;
+
+            padding: 10px 12px;
+
+            margin-bottom: 4px;
+
+            border-radius: 8px;
+
+            color:
+                rgba(255, 255, 255, 0.88);
+
+            font-size: 13px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .menu-link:hover {
+            background:
+                rgba(255, 255, 255, 0.10);
+
+            color: white;
+        }
+
+        .menu-link.active {
+            background:
+                rgba(255, 255, 255, 0.16);
+
+            color: white;
+
+            font-weight: 600;
+        }
+
+        .menu-icon {
+            width: 20px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            flex-shrink: 0;
+        }
+
+        .menu-link-text {
+            flex: 1;
+        }
+
+
+        /* =====================================================
+           INQUIRY BADGE
+        ===================================================== */
+
+        .notification-badge {
+            min-width: 18px;
+            height: 18px;
+
+            padding: 0 5px;
+
+            border-radius: 20px;
+
+            background: #ef4444;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SIDEBAR BOTTOM
+        ===================================================== */
+
+        .sidebar-bottom {
+            padding-top: 15px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+        }
+
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 8px 5px 12px;
+        }
+
+        .sidebar-avatar {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: #0b3d91;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            flex-shrink: 0;
+        }
+
+        .sidebar-user-info {
+            min-width: 0;
+        }
+
+        .sidebar-user-info strong {
+            display: block;
+
+            font-size: 11px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar-user-info span {
+            display: block;
+
+            font-size: 9px;
+
+            opacity: 0.65;
+
+            margin-top: 2px;
+        }
+
+        .logout-button {
+            width: 100%;
+
+            padding: 8px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.25);
+
+            border-radius: 6px;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            text-align: center;
+        }
+
+        .logout-button:hover {
+            background:
+                rgba(255, 255, 255, 0.10);
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .main {
+            margin-left: 250px;
+
+            width:
+                calc(100% - 250px);
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* =====================================================
+           TOPBAR
+        ===================================================== */
+
+        .topbar {
+            height: 64px;
+
+            background: white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 30px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 900;
+        }
+
+        .topbar-title h1 {
+            font-size: 17px;
+
+            font-weight: 650;
+
+            color: #111827;
+        }
+
+        .topbar-title p {
+            margin-top: 3px;
+
+            color: #6b7280;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           ADMIN USER
+        ===================================================== */
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .notification {
+            position: relative;
+
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            color: #6b7280;
+
+            font-size: 17px;
+        }
+
+        .notification:hover {
+            background: #f3f4f6;
+        }
+
+        .notification-count {
+            position: absolute;
+
+            top: 2px;
+            right: 1px;
+
+            min-width: 15px;
+            height: 15px;
+
+            padding: 0 4px;
+
+            border-radius: 20px;
+
+            background: #ef4444;
+
+            color: white;
+
+            font-size: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 700;
+        }
+
+        .avatar {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            background: #0b3d91;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .admin-info strong {
+            display: block;
+
+            font-size: 11px;
+
+            color: #111827;
+        }
+
+        .admin-info span {
+            display: block;
+
+            font-size: 9px;
+
+            color: #6b7280;
+
+            margin-top: 2px;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .content {
+            flex: 1;
+
+            padding: 30px;
+        }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .dashboard-page {
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+
+            max-width: 1500px;
+
+            margin: 0 auto;
+        }
+
+        .dashboard-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+        .dashboard-label {
+            display: inline-block;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+
+            color: #0b3d91;
+
+            margin-bottom: 7px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 25px;
+
+            color: #111827;
+
+            line-height: 1.2;
+        }
+
+        .dashboard-header p {
+            color: #6b7280;
+
+            font-size: 13px;
+
+            margin-top: 6px;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .dashboard-stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .dashboard-stat-card {
+            background: white;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 10px;
+
+            padding: 19px;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .dashboard-stat-card:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(15, 23, 42, 0.06);
+        }
+
+        .dashboard-stat-card span {
+            display: block;
+
+            color: #6b7280;
+
+            font-size: 11px;
+
+            margin-bottom: 10px;
+        }
+
+        .dashboard-stat-card strong {
+            display: block;
+
+            color: #111827;
+
+            font-size: 25px;
+
+            line-height: 1;
+        }
+
+
+        /* =====================================================
+           TABLE CARD
+        ===================================================== */
+
+        .dashboard-table-card {
+            background: white;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .dashboard-table-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 20px 22px;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+        .dashboard-table-header h2 {
+            color: #111827;
+
+            font-size: 16px;
+        }
+
+        .dashboard-table-header p {
+            color: #6b7280;
+
+            font-size: 11px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           TABLE
+        ===================================================== */
+
+        .table-responsive {
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+        .dashboard-table {
+            width: 100%;
+
+            min-width: 800px;
+
+            border-collapse: collapse;
+        }
+
+        .dashboard-table th {
+            background: #f8fafc;
+
+            color: #6b7280;
+
+            text-align: left;
+
+            font-size: 10px;
+
+            font-weight: 650;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.04em;
+
+            padding: 13px 18px;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+        .dashboard-table td {
+            padding: 16px 18px;
+
+            border-bottom:
+                1px solid #f1f5f9;
+
+            color: #374151;
+
+            font-size: 12px;
+
+            vertical-align: middle;
+        }
+
+        .dashboard-table tbody tr:hover {
+            background: #fafcff;
+        }
+
+        .dashboard-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .dashboard-table td strong {
+            display: block;
+
+            color: #111827;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+        .dashboard-table td small {
+            display: block;
+
+            color: #6b7280;
+
+            font-size: 10px;
+
+            margin-top: 4px;
+        }
+
+
+        /* =====================================================
+           STATUS BADGES
+        ===================================================== */
+
+        .status-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            font-weight: 650;
+
+            white-space: nowrap;
+        }
+
+        .status-new {
+            background: #e0edff;
+            color: #0b3d91;
+        }
+
+        .status-read {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .status-in_progress {
+            background: #fff4d6;
+            color: #946200;
+        }
+
+        .status-replied {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-closed {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+
+        /* =====================================================
+           ACTION BUTTON
+        ===================================================== */
+
+        .dashboard-action {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 7px 11px;
+
+            border-radius: 6px;
+
+            background: #eef4ff;
+
+            color: #0b3d91;
+
+            font-size: 10px;
+
+            font-weight: 650;
+
+            transition: 0.2s;
+        }
+
+        .dashboard-action:hover {
+            background: #0b3d91;
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-state {
+            text-align: center !important;
+
+            padding: 60px 20px !important;
+
+            color: #6b7280 !important;
+        }
+
+        .empty-state strong {
+            color: #374151 !important;
+
+            font-size: 14px !important;
+        }
+
+        .empty-state p {
+            color: #9ca3af;
+
+            font-size: 11px;
+
+            margin-top: 5px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .dashboard-footer {
+            padding: 18px 30px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            color: #9ca3af;
+
+            font-size: 9px;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            background: white;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .dashboard-stats {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 70px;
+
+                padding:
+                    18px 10px;
+            }
+
+            .brand {
+                justify-content: center;
+
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .brand-text {
+                display: none;
+            }
+
+            .menu-title {
+                display: none;
+            }
+
+            .menu-link {
+                justify-content: center;
+
+                padding:
+                    11px 5px;
+            }
+
+            .menu-link-text {
+                display: none;
+            }
+
+            .notification-badge {
+                position: absolute;
+
+                top: 3px;
+                right: 5px;
+            }
+
+            .sidebar-user {
+                justify-content: center;
+            }
+
+            .sidebar-user-info,
+            .logout-button {
+                display: none;
+            }
+
+            .main {
+                margin-left: 70px;
+
+                width:
+                    calc(100% - 70px);
+            }
+
+            .topbar {
+                padding:
+                    0 18px;
+            }
+
+            .admin-info {
+                display: none;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .dashboard-stats {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .dashboard-footer {
+                padding:
+                    15px 20px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header h1 {
+                font-size: 21px;
+            }
+
+            .dashboard-header p {
+                font-size: 11px;
+            }
+
+            .dashboard-footer {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+            }
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+
+                <!--
+                    Change this path if your actual logo
+                    is stored somewhere else.
+                -->
+
+                <img
+                    src="{% static 'images/logo.png' %}"
+                    alt="Elmuazz Technology"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+
+                <span
+                    class="brand-fallback"
+                    style="display:none;"
+                >
+                    ET
+                </span>
+
+            </div>
+
+
+            <div class="brand-text">
+
+                <strong>
+                    Elmuazz
+                </strong>
+
+                <span>
+                    Technology
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <nav class="sidebar-menu">
+
+
+            <!-- MAIN -->
+
+            <div class="menu-section">
+
+                <div class="menu-title">
+                    Main
+                </div>
+
+
+                <a
+                    href="{% url 'core:dashboard' %}"
+                    class="menu-link"
+                >
+
+                    <span class="menu-icon">
+                        ◉
+                    </span>
+
+                    <span class="menu-link-text">
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{% url 'core:dashboard_inquiries' %}"
+                    class="menu-link "
+                >
+
+                    <span class="menu-icon">
+                        ✉
+                    </span>
+
+                    <span class="menu-link-text">
+                        Inquiries
+                    </span>
+
+                    {% if new_inquiries %}
+                        <span class="notification-badge">
+                            {{ new_inquiries }}
+                        </span>
+                    {% endif %}
+
+                </a>
+
+            </div>
+
+
+            <!-- BUSINESS -->
+
+            <div class="menu-section">
+
+                <div class="menu-title">
+                    Business
+                </div>
+
+
+                <a
+                    href="{% url 'core:services' %}"
+                    class="menu-link"
+                >
+
+                    <span class="menu-icon">
+                        ◇
+                    </span>
+
+                    <span class="menu-link-text">
+                        Services
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{% url 'core:portfolio' %}"
+                    class="menu-link"
+                >
+
+                    <span class="menu-icon">
+                        ▤
+                    </span>
+
+                    <span class="menu-link-text">
+                        Portfolio
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{% url 'core:emcare' %}"
+                    class="menu-link"
+                >
+
+                    <span class="menu-icon">
+                        ✚
+                    </span>
+
+                    <span class="menu-link-text">
+                        EMCare
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- SYSTEM -->
+
+            <div class="menu-section">
+
+                <div class="menu-title">
+                    System
+                </div>
+
+
+                <a
+                    href="{% url 'admin:index' %}"
+                    class="menu-link"
+                >
+
+                    <span class="menu-icon">
+                        ⚙
+                    </span>
+
+                    <span class="menu-link-text">
+                        Administration
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="/"
+                    target="_blank"
+                    class="menu-link"
+                >
+
+                    <span class="menu-icon">
+                        ↗
+                    </span>
+
+                    <span class="menu-link-text">
+                        View Website
+                    </span>
+
+                </a>
+
+            </div>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR USER -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-avatar">
+
+                    {{ request.user.username|first|upper }}
+
+                </div>
+
+
+                <div class="sidebar-user-info">
+
+                    <strong>
+                        {{ request.user.username }}
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="{% url 'core:dashboard_logout' %}"
+                class="logout-button"
+            >
+                Logout
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-title">
+
+                <h1>
+
+                    {% block page_label %}
+                        Dashboard
+                    {% endblock %}
+
+                </h1>
+
+                <p>
+                    Elmuazz Technology Business Dashboard
+                </p>
+
+            </div>
+
+
+            <div class="admin-user">
+
+
+                <a
+                    href="{% url 'core:dashboard_inquiries' %}"
+                    class="notification"
+                    title="Contact inquiries"
+                >
+
+                    🔔
+
+                    {% if new_inquiries %}
+
+                        <span class="notification-count">
+                            {{ new_inquiries }}
+                        </span>
+
+                    {% endif %}
+
+                </a>
+
+
+                <div class="avatar">
+
+                    {{ request.user.username|first|upper }}
+
+                </div>
+
+
+                <div class="admin-info">
+
+                    <strong>
+                        {{ request.user.username }}
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <div class="content">
+
+            {% block dashboard_content %}
+
+            {% endblock %}
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <span>
+                © {% now "Y" %} Elmuazz Technology.
+                All rights reserved.
+            </span>
+
+            <span>
+                Empowering Business with Technology.
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>

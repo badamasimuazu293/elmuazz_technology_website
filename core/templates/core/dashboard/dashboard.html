@@ -1,0 +1,773 @@
+{% extends "core/dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Dashboard | Elmuazz Technology
+{% endblock %}
+
+
+{% block page_label %}
+    Business Dashboard
+{% endblock %}
+
+
+{% block dashboard_content %}
+<head>
+    
+</head>
+<div class="page-container">
+
+    
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-eyebrow">
+                ELMUAZZ TECHNOLOGY
+            </span>
+
+            <h1>
+                Business Dashboard
+            </h1>
+
+            <p>
+                Welcome back. Here's an overview of your business activity.
+            </p>
+
+        </div>
+
+        <div class="page-header-actions">
+
+            <a
+                href="{% url 'core:dashboard_inquiries' %}"
+                class="btn btn-primary"
+            >
+                View Inquiries
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BUSINESS STATISTICS
+    ====================================================== -->
+
+    <div class="stats-grid">
+
+        <!-- TOTAL INQUIRIES -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+
+                    <span class="stat-label">
+                        Total Inquiries
+                    </span>
+
+                    <h2>
+                        {{ total_inquiries }}
+                    </h2>
+
+                </div>
+
+                <div class="stat-icon">
+                    ✉
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                All customer inquiries
+            </span>
+
+        </div>
+
+
+        <!-- NEW -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+
+                    <span class="stat-label">
+                        New Inquiries
+                    </span>
+
+                    <h2>
+                        {{ new_inquiries }}
+                    </h2>
+
+                </div>
+
+                <div class="stat-icon stat-icon-new">
+                    !
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                Require your attention
+            </span>
+
+        </div>
+
+
+        <!-- IN PROGRESS -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+
+                    <span class="stat-label">
+                        In Progress
+                    </span>
+
+                    <h2>
+                        {{ in_progress_inquiries }}
+                    </h2>
+
+                </div>
+
+                <div class="stat-icon stat-icon-progress">
+                    ◷
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                Currently being handled
+            </span>
+
+        </div>
+
+
+        <!-- REPLIED -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+
+                    <span class="stat-label">
+                        Replied
+                    </span>
+
+                    <h2>
+                        {{ replied_inquiries }}
+                    </h2>
+
+                </div>
+
+                <div class="stat-icon stat-icon-replied">
+                    ✓
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                Customers contacted
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN DASHBOARD GRID
+    ====================================================== -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- =================================================
+             RECENT INQUIRIES
+        ================================================== -->
+
+        <div class="content-card">
+
+            <div class="content-card-header">
+
+                <div>
+
+                    <h2>
+                        Recent Inquiries
+                    </h2>
+
+                    <p>
+                        Latest customer requests received.
+                    </p>
+
+                </div>
+
+                <a
+                    href="{% url 'core:dashboard_inquiries' %}"
+                    class="view-all-link"
+                >
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Service
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for inquiry in recent_inquiries %}
+
+                        <tr>
+
+                            <!-- CUSTOMER -->
+
+                            <td>
+
+                                <div class="customer-cell">
+
+                                    <div class="customer-avatar">
+                                        {{ inquiry.name|first|upper }}
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            {{ inquiry.name }}
+                                        </strong>
+
+                                        <span>
+                                            {{ inquiry.email }}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- SERVICE -->
+
+                            <td>
+
+                                {{ inquiry.get_service_display }}
+
+                            </td>
+
+
+                            <!-- STATUS -->
+
+                            <td>
+
+                                {% if inquiry.status == "new" %}
+
+                                    <span class="status-badge status-new">
+                                        New
+                                    </span>
+
+                                {% elif inquiry.status == "read" %}
+
+                                    <span class="status-badge status-read">
+                                        Read
+                                    </span>
+
+                                {% elif inquiry.status == "in_progress" %}
+
+                                    <span class="status-badge status-in-progress">
+                                        In Progress
+                                    </span>
+
+                                {% elif inquiry.status == "replied" %}
+
+                                    <span class="status-badge status-replied">
+                                        Replied
+                                    </span>
+
+                                {% elif inquiry.status == "closed" %}
+
+                                    <span class="status-badge status-closed">
+                                        Closed
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="status-badge">
+                                        {{ inquiry.get_status_display }}
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <!-- DATE -->
+
+                            <td>
+
+                                {{ inquiry.created_at|date:"M d, Y" }}
+
+                            </td>
+
+
+                            <!-- ACTION -->
+
+                            <td>
+
+                                <a
+                                    href="{% url 'core:dashboard_inquiry_detail' inquiry.id %}"
+                                    class="action-button"
+                                >
+                                    View
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        {% empty %}
+
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                class="empty-state"
+                            >
+
+                                <div class="empty-state-content">
+
+                                    <div class="empty-state-icon">
+                                        ✉
+                                    </div>
+
+                                    <h3>
+                                        No inquiries yet
+                                    </h3>
+
+                                    <p>
+                                        Customer inquiries will appear here
+                                        when submitted through your website.
+                                    </p>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             INQUIRY STATUS
+        ================================================== -->
+
+        <div class="content-card">
+
+            <div class="content-card-header">
+
+                <div>
+
+                    <h2>
+                        Inquiry Status
+                    </h2>
+
+                    <p>
+                        Current inquiry distribution.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-summary">
+
+
+                <!-- NEW -->
+
+                <div class="status-summary-row">
+
+                    <div class="status-summary-label">
+
+                        <span class="status-dot status-dot-new"></span>
+
+                        <span>
+                            New
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ new_inquiries }}
+                    </strong>
+
+                </div>
+
+
+                <!-- READ -->
+
+                <div class="status-summary-row">
+
+                    <div class="status-summary-label">
+
+                        <span class="status-dot status-dot-read"></span>
+
+                        <span>
+                            Read
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ read_inquiries }}
+                    </strong>
+
+                </div>
+
+
+                <!-- IN PROGRESS -->
+
+                <div class="status-summary-row">
+
+                    <div class="status-summary-label">
+
+                        <span class="status-dot status-dot-progress"></span>
+
+                        <span>
+                            In Progress
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ in_progress_inquiries }}
+                    </strong>
+
+                </div>
+
+
+                <!-- REPLIED -->
+
+                <div class="status-summary-row">
+
+                    <div class="status-summary-label">
+
+                        <span class="status-dot status-dot-replied"></span>
+
+                        <span>
+                            Replied
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ replied_inquiries }}
+                    </strong>
+
+                </div>
+
+
+                <!-- CLOSED -->
+
+                <div class="status-summary-row">
+
+                    <div class="status-summary-label">
+
+                        <span class="status-dot status-dot-closed"></span>
+
+                        <span>
+                            Closed
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        {{ closed_inquiries }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATUS ACTION -->
+
+            <div class="content-card-footer">
+
+                <a
+                    href="{% url 'core:dashboard_inquiries' %}"
+                    class="btn btn-secondary btn-full"
+                >
+                    Manage All Inquiries
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         QUICK ACTIONS
+    ====================================================== -->
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Quick Actions
+            </h2>
+
+            <p>
+                Frequently used business management tools.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="quick-actions-grid">
+
+
+        <!-- INQUIRIES -->
+
+        <a
+            href="{% url 'core:dashboard_inquiries' %}"
+            class="quick-action-card"
+        >
+
+            <div class="quick-action-icon">
+                ✉
+            </div>
+
+            <div>
+
+                <h3>
+                    Manage Inquiries
+                </h3>
+
+                <p>
+                    Review and respond to customer inquiries.
+                </p>
+
+            </div>
+
+            <span class="quick-action-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- SERVICES -->
+
+        <a
+            href="{% url 'core:services' %}"
+            class="quick-action-card"
+        >
+
+            <div class="quick-action-icon">
+                ◇
+            </div>
+
+            <div>
+
+                <h3>
+                    View Services
+                </h3>
+
+                <p>
+                    Review the services offered by Elmuazz Technology.
+                </p>
+
+            </div>
+
+            <span class="quick-action-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- PORTFOLIO -->
+
+        <a
+            href="{% url 'core:portfolio' %}"
+            class="quick-action-card"
+        >
+
+            <div class="quick-action-icon">
+                ▦
+            </div>
+
+            <div>
+
+                <h3>
+                    View Portfolio
+                </h3>
+
+                <p>
+                    Explore completed projects and solutions.
+                </p>
+
+            </div>
+
+            <span class="quick-action-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- WEBSITE -->
+
+        <a
+            href="{% url 'core:home' %}"
+            class="quick-action-card"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <div class="quick-action-icon">
+                ↗
+            </div>
+
+            <div>
+
+                <h3>
+                    View Website
+                </h3>
+
+                <p>
+                    Open the public Elmuazz Technology website.
+                </p>
+
+            </div>
+
+            <span class="quick-action-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- ADMINISTRATION -->
+
+        <a
+            href="{% url 'admin:index' %}"
+            class="quick-action-card"
+        >
+
+            <div class="quick-action-icon">
+                ⚙
+            </div>
+
+            <div>
+
+                <h3>
+                    Administration
+                </h3>
+
+                <p>
+                    Access Django administration tools.
+                </p>
+
+            </div>
+
+            <span class="quick-action-arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- EMCARE -->
+
+        <a
+            href="{% url 'core:emcare' %}"
+            class="quick-action-card"
+        >
+
+            <div class="quick-action-icon">
+                +
+            </div>
+
+            <div>
+
+                <h3>
+                    EMCare
+                </h3>
+
+                <p>
+                    View the EMCare healthcare technology solution.
+                </p>
+
+            </div>
+
+            <span class="quick-action-arrow">
+                →
+            </span>
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

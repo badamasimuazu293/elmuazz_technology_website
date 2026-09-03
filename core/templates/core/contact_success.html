@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Thank You | Elmuazz Technology
+{% endblock %}
+
+
+{% block content %}
+
+<section class="contact-success">
+
+    <div class="container">
+
+        <div class="success-box">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <span class="section-label">
+                MESSAGE RECEIVED
+            </span>
+
+            <h1>
+                Thank you for
+                <span>contacting us.</span>
+            </h1>
+
+            <p>
+                Your project request has been received
+                successfully. The Elmuazz Technology team
+                will review your message and get back to you.
+            </p>
+
+            <div class="success-actions">
+
+                <a
+                    href="{% url 'core:home' %}"
+                    class="btn cta-primary-btn"
+                >
+                    Back to Home
+                    <span class="btn-arrow">→</span>
+                </a>
+
+                <a
+                    href="{% url 'core:services' %}"
+                    class="success-secondary"
+                >
+                    Explore Services
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,397 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    {{ service.title }} | Elmuazz Technology
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =====================================================
+     SERVICE HERO
+===================================================== -->
+
+<section class="service-detail-hero">
+
+    <div class="container">
+
+        <div class="service-detail-hero-content">
+
+            <span class="service-detail-label">
+                ELMUAZZ TECHNOLOGY • OUR SERVICES
+            </span>
+
+            <h1>
+                {{ service.title }}
+            </h1>
+
+            <p>
+                {{ service.description }}
+            </p>
+
+            <div class="service-detail-actions">
+
+                <a
+                    href="{% url 'core:contact' %}"
+                    class="btn btn-primary"
+                >
+                    Start a Project
+                    <span>→</span>
+                </a>
+
+                <a
+                    href="{% url 'core:services' %}"
+                    class="btn btn-secondary"
+                >
+                    View All Services
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICE OVERVIEW
+===================================================== -->
+
+<section class="service-overview">
+
+    <div class="container">
+
+        <div class="service-section-heading">
+
+            <span>
+                WHAT WE DO
+            </span>
+
+            <h2>
+                Technology solutions designed around your business
+            </h2>
+
+            <p>
+                We combine technology, creativity, and business
+                understanding to build solutions that solve real
+                problems and create measurable value.
+            </p>
+
+        </div>
+
+
+        <div class="service-features-grid">
+
+            {% if service.features %}
+
+                {% for feature in service.features %}
+
+                    <div class="service-feature-card">
+
+                        <div class="service-feature-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            {{ feature.title }}
+                        </h3>
+
+                        <p>
+                            {{ feature.description }}
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="service-feature-card">
+
+                    <div class="service-feature-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        Professional Solutions
+                    </h3>
+
+                    <p>
+                        We deliver reliable and scalable technology
+                        solutions designed around your organization's
+                        goals and requirements.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY CHOOSE ELMUAZZ
+===================================================== -->
+
+<section class="service-why-us">
+
+    <div class="container">
+
+        <div class="service-why-grid">
+
+
+            <!-- LEFT -->
+
+            <div class="service-why-content">
+
+                <span class="service-detail-label">
+                    WHY ELMUAZZ TECHNOLOGY
+                </span>
+
+                <h2>
+                    We build technology that works for your business.
+                </h2>
+
+                <p>
+                    Our goal is not simply to develop software.
+                    We create reliable digital solutions that
+                    improve operations, solve business challenges,
+                    and help organizations grow.
+                </p>
+
+
+                <div class="service-benefits">
+
+
+                    <!-- BENEFIT 01 -->
+
+                    <div class="service-benefit">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <h3>
+                                Business-Focused
+                            </h3>
+
+                            <p>
+                                Every solution is designed around
+                                your actual business needs and goals.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BENEFIT 02 -->
+
+                    <div class="service-benefit">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <h3>
+                                Modern Technology
+                            </h3>
+
+                            <p>
+                                We use modern tools and development
+                                practices to create scalable solutions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BENEFIT 03 -->
+
+                    <div class="service-benefit">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <h3>
+                                Reliable Support
+                            </h3>
+
+                            <p>
+                                We remain available to improve,
+                                maintain, and support your solution.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="service-process-card">
+
+                <span class="service-detail-label">
+                    OUR APPROACH
+                </span>
+
+                <h3>
+                    From idea to implementation
+                </h3>
+
+
+                <!-- STEP 01 -->
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Discover
+                        </h4>
+
+                        <p>
+                            We understand your goals, challenges,
+                            and requirements.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 02 -->
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Design
+                        </h4>
+
+                        <p>
+                            We create a clear solution and user
+                            experience tailored to your needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 03 -->
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Develop
+                        </h4>
+
+                        <p>
+                            Our team builds and tests the solution
+                            using modern technologies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 04 -->
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Deliver & Support
+                        </h4>
+
+                        <p>
+                            We launch the solution and continue
+                            supporting its growth.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="service-detail-cta">
+
+    <div class="container">
+
+        <div class="service-cta-content">
+
+            <span>
+                HAVE A PROJECT IN MIND?
+            </span>
+
+            <h2>
+                Let's build something impactful together.
+            </h2>
+
+            <p>
+                Tell us about your business challenge and
+                we'll help you turn your idea into a practical
+                technology solution.
+            </p>
+
+            <a
+                href="{% url 'core:contact' %}"
+                class="btn btn-light"
+            >
+                Start Your Project
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

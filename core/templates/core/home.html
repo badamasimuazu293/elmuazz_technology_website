@@ -1,0 +1,1748 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Elmuazz Technology - Empowering Business with Technology.">
+
+    <title>Elmuazz Technology | Empowering Business with Technology</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+
+
+   <main>
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="container hero-container">
+
+            <!-- Hero Content -->
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+
+                    <span class="hero-badge-dot"></span>
+
+                    Technology Solutions for Modern Businesses
+
+                </div>
+
+                <h1>
+
+                    Empowering Businesses
+                    <span>with Technology</span>
+
+                </h1>
+
+                <p class="hero-description">
+
+                    We build innovative, reliable, and scalable
+                    software solutions that help businesses
+                    automate operations, improve efficiency,
+                    and grow in a digital world.
+
+                </p>
+
+
+                <!-- Hero Buttons -->
+
+                <div class="hero-actions">
+
+                    <a href="{% url 'core:contact' %}" class="btn btn-primary">
+
+                        Start a Project
+
+                        <span class="btn-arrow">→</span>
+
+                    </a>
+
+                    <a href="{% url 'core:services' %}" class="btn btn-secondary">
+
+                        Explore Solutions
+
+                    </a>
+
+                </div>
+
+
+                <!-- Hero Trust Points -->
+
+                <div class="hero-trust">
+
+                    <div class="trust-item">
+
+                        <span class="trust-icon">✓</span>
+
+                        Innovative
+
+                    </div>
+
+                    <div class="trust-item">
+
+                        <span class="trust-icon">✓</span>
+
+                        Scalable
+
+                    </div>
+
+                    <div class="trust-item">
+
+                        <span class="trust-icon">✓</span>
+
+                        Reliable
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hero Visual -->
+
+            <div class="hero-visual">
+
+                <div class="hero-glow"></div>
+
+                <div class="hero-orbit orbit-one"></div>
+
+                <div class="hero-orbit orbit-two"></div>
+
+
+                <div class="hero-card main-card">
+
+                    <div class="hero-card-header">
+
+                        <div class="hero-card-logo">
+                            E
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Elmuazz Technology
+                            </strong>
+
+                            <small>
+                                Digital Solutions
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-dashboard">
+
+                        <div class="dashboard-bar"></div>
+
+                        <div class="dashboard-grid">
+
+                            <div class="dashboard-item">
+                                <span></span>
+                            </div>
+
+                            <div class="dashboard-item">
+                                <span></span>
+                            </div>
+
+                            <div class="dashboard-item">
+                                <span></span>
+                            </div>
+
+                        </div>
+
+                        <div class="dashboard-chart">
+
+                            <div class="chart-line"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-card floating-card-one">
+
+                    <span class="floating-icon">⚡</span>
+
+                    <div>
+
+                        <strong>
+                            Innovation
+                        </strong>
+
+                        <small>
+                            Smart Solutions
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-card floating-card-two">
+
+                    <span class="floating-icon">↗</span>
+
+                    <div>
+
+                        <strong>
+                            Growth
+                        </strong>
+
+                        <small>
+                            Business Success
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+     TECHNOLOGY & TRUST
+========================== -->
+
+<section class="technology-section">
+
+    <div class="container">
+
+        <div class="technology-intro">
+
+            <span class="section-label">
+                OUR TECHNOLOGY
+            </span>
+
+            <h2>
+                Built with Modern Technology
+            </h2>
+
+            <p>
+                We use reliable and modern technologies to
+                create secure, scalable, and high-performance
+                digital solutions.
+            </p>
+
+        </div>
+
+
+        <!-- Technology Stack -->
+
+        <div class="technology-stack">
+
+            <div class="technology-item">
+                <span class="technology-icon">Py</span>
+                <span>Python</span>
+            </div>
+
+            <div class="technology-item">
+                <span class="technology-icon">Dj</span>
+                <span>Django</span>
+            </div>
+
+            <div class="technology-item">
+                <span class="technology-icon">JS</span>
+                <span>JavaScript</span>
+            </div>
+
+            <div class="technology-item">
+                <span class="technology-icon">HT</span>
+                <span>HTML & CSS</span>
+            </div>
+
+            <div class="technology-item">
+                <span class="technology-icon">DB</span>
+                <span>PostgreSQL</span>
+            </div>
+
+            <div class="technology-item">
+                <span class="technology-icon">UI</span>
+                <span>UI/UX Design</span>
+            </div>
+
+        </div>
+
+
+        <!-- Trust Indicators -->
+
+        <div class="trust-grid">
+
+            <div class="trust-card">
+
+                <div class="trust-card-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <h3>
+                        Reliable Solutions
+                    </h3>
+
+                    <p>
+                        We build dependable systems designed
+                        for real-world business needs.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-card">
+
+                <div class="trust-card-icon">
+                    ↗
+                </div>
+
+                <div>
+
+                    <h3>
+                        Scalable Technology
+                    </h3>
+
+                    <p>
+                        Our solutions are designed to grow
+                        alongside your organization.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trust-card">
+
+                <div class="trust-card-icon">
+                    ◈
+                </div>
+
+                <div>
+
+                    <h3>
+                        User-Centered Design
+                    </h3>
+
+                    <p>
+                        We create simple and intuitive experiences
+                        for the people who use our products.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     SERVICES SECTION
+========================== -->
+
+<section class="services-section">
+
+    <div class="container">
+
+        <!-- Section Heading -->
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    OUR SERVICES
+                </span>
+
+                <h2>
+                    Technology Solutions
+                    <span>Built for Your Business</span>
+                </h2>
+
+            </div>
+
+            <p>
+                From custom software to intelligent digital
+                solutions, we help businesses transform ideas
+                into practical technology.
+            </p>
+
+        </div>
+
+
+        <!-- Services Grid -->
+
+        <div class="services-grid">
+
+
+            <!-- Service 01 -->
+
+            <article class="service-card">
+
+                <div class="service-number">
+                    01
+                </div>
+
+                <div class="service-icon">
+                    &lt;/&gt;
+                </div>
+
+                <h3>
+                    Custom Software Development
+                </h3>
+
+                <p>
+                    We build tailored software systems that
+                    automate business processes and solve
+                    specific operational challenges.
+                </p>
+
+                <a href="{% url 'core:service_detail' 'custom-software-development' %}" class="service-link">
+                    Learn More
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Service 02 -->
+
+            <article class="service-card">
+
+                <div class="service-number">
+                    02
+                </div>
+
+                <div class="service-icon">
+                    ◫
+                </div>
+
+                <h3>
+                    Web Development
+                </h3>
+
+                <p>
+                    We create modern, responsive websites and
+                    powerful web applications designed for
+                    businesses and organizations.
+                </p>
+
+                <a href="{% url 'core:service_detail' 'web-development' %}" class="service-link">
+                    Learn More
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Service 03 -->
+
+            <article class="service-card">
+
+                <div class="service-number">
+                    03
+                </div>
+
+                <div class="service-icon">
+                    ◉
+                </div>
+
+                <h3>
+                    Mobile App Development
+                </h3>
+
+                <p>
+                    We develop user-friendly mobile applications
+                    that provide convenient and powerful digital
+                    experiences.
+                </p>
+
+                <a href="{% url 'core:service_detail' 'mobile-app-development' %}" class="service-link">
+                    Learn More
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Service 04 -->
+
+            <article class="service-card">
+
+                <div class="service-number">
+                    04
+                </div>
+
+                <div class="service-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    UI/UX Design
+                </h3>
+
+                <p>
+                    We design intuitive interfaces and experiences
+                    that make digital products simple, attractive,
+                    and enjoyable to use.
+                </p>
+
+                <a href="{% url 'core:service_detail' 'ui-ux-design' %}" class="service-link">
+                    Learn More
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Service 05 -->
+
+            <article class="service-card featured-service">
+
+                <div class="service-number">
+                    05
+                </div>
+
+                <div class="service-icon">
+                    AI
+                </div>
+
+                <h3>
+                    AI & Intelligent Solutions
+                </h3>
+
+                <p>
+                    We integrate artificial intelligence into
+                    software to automate tasks, analyze data,
+                    and support smarter decisions.
+                </p>
+
+                <a href="{% url 'core:service_detail' 'ai-intelligent-solutions' %}" class="service-link">
+                    Learn More
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+            <!-- Service 06 -->
+
+            <article class="service-card">
+
+                <div class="service-number">
+                    06
+                </div>
+
+                <div class="service-icon">
+                    ↗
+                </div>
+
+                <h3>
+                    Digital Transformation
+                </h3>
+
+                <p>
+                    We help organizations move from manual
+                    processes to efficient and connected
+                    digital workflows.
+                </p>
+
+                <a href="{% url 'core:service_detail' 'digital-transformation' %}" class="service-link">
+                    Learn More
+                    <span>→</span>
+                </a>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- Services CTA -->
+
+        <div class="services-cta">
+
+            <p>
+                Have a specific technology requirement?
+            </p>
+
+            <a href="{% url 'core:contact' %}" class="btn btn-primary">
+                Discuss Your Project
+                <span class="btn-arrow">→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     EMCare FEATURED SOLUTION
+========================== -->
+
+<section class="emcare-section">
+
+    <div class="container">
+
+        <div class="emcare-wrapper">
+
+            <!-- EMCare Content -->
+
+            <div class="emcare-content">
+
+                <span class="section-label emcare-label">
+                    OUR FLAGSHIP SOLUTION
+                </span>
+
+                <div class="emcare-brand">
+                    EMCare
+                </div>
+
+                <h2>
+                    Modern Healthcare
+                    <span>Management, Connected.</span>
+                </h2>
+
+                <p class="emcare-description">
+
+                    EMCare is a comprehensive hospital management
+                    system designed to connect healthcare operations
+                    in one intelligent platform — from patient
+                    registration and appointments to medical records,
+                    laboratory, pharmacy, billing and analytics.
+
+                </p>
+
+
+                <!-- Features -->
+
+                <div class="emcare-features">
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Patient Management
+                    </div>
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Appointments & Queue
+                    </div>
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Electronic Medical Records
+                    </div>
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Laboratory Management
+                    </div>
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Pharmacy Management
+                    </div>
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Billing & Invoicing
+                    </div>
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Notifications
+                    </div>
+
+                    <div class="emcare-feature">
+                        <span>✓</span>
+                        Analytics
+                    </div>
+
+                </div>
+
+
+                <!-- CTA -->
+
+                <div class="emcare-actions">
+
+                    <a href="{% url 'core:emcare' %}" class="btn btn-primary">
+                        Explore EMCare
+                        <span class="btn-arrow">→</span>
+                    </a>
+
+                    <a href="{% url 'core:contact' %}" class="emcare-text-link">
+                        Request a Demo
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMCare Dashboard Visual -->
+
+            <div class="emcare-visual">
+
+                <div class="emcare-glow"></div>
+
+                <div class="emcare-dashboard">
+
+                    <!-- Dashboard Header -->
+
+                    <div class="emcare-dashboard-header">
+
+                        <div class="emcare-dashboard-brand">
+
+                            <div class="emcare-mini-logo">
+                                E
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    EMCare
+                                </strong>
+
+                                <small>
+                                    Hospital Management
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <div class="emcare-status">
+                            ●
+                        </div>
+
+                    </div>
+
+
+                    <!-- Dashboard Body -->
+
+                    <div class="emcare-dashboard-body">
+
+                        <div class="emcare-sidebar">
+
+                            <span class="sidebar-active"></span>
+
+                            <span></span>
+
+                            <span></span>
+
+                            <span></span>
+
+                            <span></span>
+
+                        </div>
+
+
+                        <div class="emcare-main-dashboard">
+
+                            <div class="dashboard-welcome">
+
+                                <div>
+                                    <small>
+                                        Dashboard
+                                    </small>
+
+                                    <strong>
+                                        Good morning, Admin
+                                    </strong>
+                                </div>
+
+                                <div class="dashboard-avatar">
+                                    A
+                                </div>
+
+                            </div>
+
+
+                            <!-- Dashboard Statistics -->
+
+                            <div class="emcare-stats">
+
+                                <div class="emcare-stat">
+
+                                    <small>
+                                        Patients
+                                    </small>
+
+                                    <strong>
+                                        1,248
+                                    </strong>
+
+                                    <span>
+                                        +12.5%
+                                    </span>
+
+                                </div>
+
+                                <div class="emcare-stat">
+
+                                    <small>
+                                        Appointments
+                                    </small>
+
+                                    <strong>
+                                        86
+                                    </strong>
+
+                                    <span>
+                                        Today
+                                    </span>
+
+                                </div>
+
+                                <div class="emcare-stat">
+
+                                    <small>
+                                        Revenue
+                                    </small>
+
+                                    <strong>
+                                        ₦842K
+                                    </strong>
+
+                                    <span>
+                                        This month
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Dashboard Chart -->
+
+                            <div class="emcare-chart">
+
+                                <div class="chart-heading">
+
+                                    <strong>
+                                        Patient Overview
+                                    </strong>
+
+                                    <small>
+                                        Last 7 days
+                                    </small>
+
+                                </div>
+
+                                <div class="chart-bars">
+
+                                    <span style="height: 40%;"></span>
+                                    <span style="height: 65%;"></span>
+                                    <span style="height: 50%;"></span>
+                                    <span style="height: 80%;"></span>
+                                    <span style="height: 60%;"></span>
+                                    <span style="height: 90%;"></span>
+                                    <span style="height: 72%;"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Floating notification -->
+
+                <div class="emcare-floating-card">
+
+                    <div class="emcare-floating-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            System Connected
+                        </strong>
+
+                        <small>
+                            All departments synchronized
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     WHY CHOOSE ELMUAZZ
+========================== -->
+
+<section class="why-section">
+
+    <div class="container">
+
+        <div class="why-wrapper">
+
+            <!-- Left Content -->
+
+            <div class="why-content">
+
+                <span class="section-label">
+                    WHY ELMUAZZ TECHNOLOGY
+                </span>
+
+                <h2>
+                    Technology That
+                    <span>Moves Your Business Forward.</span>
+                </h2>
+
+                <p>
+                    We don't just build software. We understand
+                    business problems, design practical solutions,
+                    and use technology to create measurable value.
+                </p>
+
+                <p>
+                    Our approach combines modern engineering,
+                    thoughtful design, and long-term partnership
+                    to help organizations operate better and grow.
+                </p>
+
+                <a href="{% url 'core:contact' %}" class="btn btn-primary">
+                    Work With Us
+                    <span class="btn-arrow">→</span>
+                </a>
+
+            </div>
+
+
+            <!-- Right Benefits -->
+
+            <div class="why-grid">
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Innovation
+                        </h3>
+
+                        <p>
+                            We explore modern technologies and
+                            creative approaches to solve complex
+                            business challenges.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Quality
+                        </h3>
+
+                        <p>
+                            We focus on clean design, reliable
+                            systems, and software built with
+                            attention to detail.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+                        ↗
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Scalability
+                        </h3>
+
+                        <p>
+                            Our solutions are designed to evolve
+                            as your business grows and your
+                            requirements change.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="why-card">
+
+                    <div class="why-icon">
+                        ◈
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Security
+                        </h3>
+
+                        <p>
+                            We consider security and responsible
+                            data handling throughout the software
+                            development process.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="why-card why-card-wide">
+
+                    <div class="why-icon">
+                        ♢
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Client Partnership
+                        </h3>
+
+                        <p>
+                            We work closely with our clients from
+                            idea to deployment and beyond, building
+                            technology around their actual needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     DEVELOPMENT PROCESS
+========================== -->
+
+<section class="process-section">
+
+    <div class="container">
+
+        <div class="process-heading">
+
+            <span class="section-label">
+                HOW WE WORK
+            </span>
+
+            <h2>
+                From Idea to
+                <span>Impact.</span>
+            </h2>
+
+            <p>
+                We follow a clear and collaborative process
+                to transform your idea into a reliable digital
+                solution.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+            <!-- Step 01 -->
+
+            <div class="process-card">
+
+                <div class="process-top">
+
+                    <span class="process-number">
+                        01
+                    </span>
+
+                    <div class="process-icon">
+                        ◎
+                    </div>
+
+                </div>
+
+                <h3>
+                    Discover
+                </h3>
+
+                <p>
+                    We understand your business, identify
+                    challenges, gather requirements, and
+                    define the right solution.
+                </p>
+
+                <span class="process-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <!-- Step 02 -->
+
+            <div class="process-card">
+
+                <div class="process-top">
+
+                    <span class="process-number">
+                        02
+                    </span>
+
+                    <div class="process-icon">
+                        ✦
+                    </div>
+
+                </div>
+
+                <h3>
+                    Design
+                </h3>
+
+                <p>
+                    We transform requirements into intuitive
+                    user experiences, system architecture,
+                    and a clear product design.
+                </p>
+
+                <span class="process-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <!-- Step 03 -->
+
+            <div class="process-card">
+
+                <div class="process-top">
+
+                    <span class="process-number">
+                        03
+                    </span>
+
+                    <div class="process-icon">
+                        &lt;/&gt;
+                    </div>
+
+                </div>
+
+                <h3>
+                    Develop
+                </h3>
+
+                <p>
+                    Our developers build, integrate, test,
+                    and refine the solution using modern
+                    development practices.
+                </p>
+
+                <span class="process-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <!-- Step 04 -->
+
+            <div class="process-card process-card-last">
+
+                <div class="process-top">
+
+                    <span class="process-number">
+                        04
+                    </span>
+
+                    <div class="process-icon">
+                        ↗
+                    </div>
+
+                </div>
+
+                <h3>
+                    Deploy & Support
+                </h3>
+
+                <p>
+                    We launch the solution, monitor its
+                    performance, and provide ongoing support
+                    as your business grows.
+                </p>
+
+                <span class="process-arrow">
+                    ✓
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Process Statement -->
+
+        <div class="process-statement">
+
+            <div class="process-statement-icon">
+                E
+            </div>
+
+            <div>
+
+                <strong>
+                    Built around your business.
+                </strong>
+
+                <p>
+                    Every project is different. Our process
+                    adapts to your goals, requirements, and
+                    budget.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     PORTFOLIO SECTION
+========================== -->
+
+<section class="portfolio-section">
+
+    <div class="container">
+
+        <div class="portfolio-heading">
+
+            <div>
+
+                <span class="section-label">
+                    OUR WORK
+                </span>
+
+                <h2>
+                    Solutions We've
+                    <span>Built.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Explore some of the digital solutions we are
+                building to solve real-world business problems.
+            </p>
+
+        </div>
+
+
+        <div class="portfolio-grid">
+
+
+            <!-- Project 01 -->
+
+            <article class="portfolio-card portfolio-featured">
+
+                <div class="portfolio-visual emcare-portfolio">
+
+                    <div class="portfolio-window">
+
+                        <div class="portfolio-window-header">
+
+                            <div class="window-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <small>
+                                EMCare Dashboard
+                            </small>
+
+                        </div>
+
+
+                        <div class="portfolio-dashboard">
+
+                            <div class="portfolio-sidebar">
+
+                                <span class="active"></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+
+                            </div>
+
+
+                            <div class="portfolio-dashboard-content">
+
+                                <div class="portfolio-stat-row">
+
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+
+                                </div>
+
+                                <div class="portfolio-chart-preview">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                                <div class="portfolio-lines">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <div class="portfolio-meta">
+
+                        <span>
+                            Healthcare
+                        </span>
+
+                        <span>
+                            Web Application
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        EMCare
+                    </h3>
+
+                    <p>
+                        A comprehensive healthcare management
+                        platform connecting patient management,
+                        appointments, medical records, laboratory,
+                        pharmacy, billing, queue management,
+                        notifications, and analytics.
+                    </p>
+
+
+                    <div class="portfolio-tags">
+
+                        <span>
+                            Django
+                        </span>
+
+                        <span>
+                            Python
+                        </span>
+
+                        <span>
+                            JavaScript
+                        </span>
+
+                        <span>
+                            PostgreSQL
+                        </span>
+
+                    </div>
+
+
+                    <a href="{% url 'core:portfolio' %}" class="portfolio-link">
+
+                        Explore Project
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Project 02 -->
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-visual datasell-portfolio">
+
+                    <div class="datasell-interface">
+
+                        <div class="datasell-topbar">
+
+                            <strong>
+                                DataSell
+                            </strong>
+
+                            <span>
+                                ●
+                            </span>
+
+                        </div>
+
+
+                        <div class="datasell-cards">
+
+                            <div>
+                                <small>
+                                    Total Sales
+                                </small>
+
+                                <strong>
+                                    ₦248K
+                                </strong>
+                            </div>
+
+                            <div>
+                                <small>
+                                    Customers
+                                </small>
+
+                                <strong>
+                                    1,240
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="datasell-chart">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <div class="portfolio-meta">
+
+                        <span>
+                            Business
+                        </span>
+
+                        <span>
+                            Web Platform
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        DataSell
+                    </h3>
+
+                    <p>
+                        A web-based management platform designed
+                        to help data-selling businesses manage
+                        operations, customers, transactions, and
+                        sales more efficiently.
+                    </p>
+
+
+                    <div class="portfolio-tags">
+
+                        <span>
+                            Web
+                        </span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                        <span>
+                            Management
+                        </span>
+
+                    </div>
+
+
+                    <a href="{% url 'core:portfolio' %}" class="portfolio-link">
+
+                        View Project
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Project 03 -->
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-visual custom-portfolio">
+
+                    <div class="custom-orbit orbit-a"></div>
+
+                    <div class="custom-orbit orbit-b"></div>
+
+                    <div class="custom-center">
+                        E
+                    </div>
+
+                    <div class="custom-node node-a">
+                        Web
+                    </div>
+
+                    <div class="custom-node node-b">
+                        AI
+                    </div>
+
+                    <div class="custom-node node-c">
+                        App
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <div class="portfolio-meta">
+
+                        <span>
+                            Custom Solutions
+                        </span>
+
+                        <span>
+                            Digital Products
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Business Technology Solutions
+                    </h3>
+
+                    <p>
+                        We create customized digital products
+                        tailored to the unique requirements of
+                        businesses, organizations, and startups.
+                    </p>
+
+
+                    <div class="portfolio-tags">
+
+                        <span>
+                            Software
+                        </span>
+
+                        <span>
+                            AI
+                        </span>
+
+                        <span>
+                            UI/UX
+                        </span>
+
+                    </div>
+
+
+                    <a href="{% url 'core:contact' %}" class="portfolio-link">
+
+                        Start a Project
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <div class="portfolio-bottom">
+
+            <p>
+                Have a project in mind?
+            </p>
+
+            <a href="{% url 'core:contact' %}" class="btn btn-primary">
+
+                Let's Build It
+
+                <span class="btn-arrow">
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FINAL CTA
+========================== -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <div class="cta-decoration cta-decoration-one"></div>
+            <div class="cta-decoration cta-decoration-two"></div>
+
+            <div class="cta-content">
+
+                <span class="cta-label">
+                    LET'S BUILD SOMETHING GREAT
+                </span>
+
+                <h2>
+                    Have an Idea?
+                    <span>Let's Build It Together.</span>
+                </h2>
+
+                <p>
+                    Whether you are starting a new business,
+                    improving an existing operation, or bringing
+                    a new digital product to life, Elmuazz
+                    Technology is ready to help.
+                </p>
+
+                <div class="cta-actions">
+
+                    <a href="{% url 'core:contact' %}" class="btn cta-primary-btn">
+                        Start a Project
+                        <span class="btn-arrow">→</span>
+                    </a>
+
+                    <a href="{% url 'core:contact' %}" class="cta-contact-link">
+                        Contact Us
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+</main>
+
+    <!-- JavaScript -->
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
+
+{% endblock %}

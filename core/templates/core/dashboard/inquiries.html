@@ -1,0 +1,496 @@
+
+{% extends "core/dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Contact Inquiries | Elmuazz Technology
+{% endblock %}
+
+
+{% block page_label %}
+    Contact Inquiries
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="page-container">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="page-header">
+
+        <div>
+            <span class="page-eyebrow">
+                CUSTOMER MANAGEMENT
+            </span>
+
+            <h1>
+                Contact Inquiries
+            </h1>
+
+            <p>
+                Manage, review and respond to customer project inquiries.
+            </p>
+        </div>
+
+        <div class="page-header-actions">
+
+            <a
+                href="{% url 'core:dashboard' %}"
+                class="btn btn-secondary"
+            >
+                ← Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <div class="stats-grid">
+
+        <!-- TOTAL -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+                    <span class="stat-label">
+                        Total Inquiries
+                    </span>
+
+                    <h2>
+                        {{ total_inquiries }}
+                    </h2>
+                </div>
+
+                <div class="stat-icon">
+                    ✉
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                All customer inquiries
+            </span>
+
+        </div>
+
+
+        <!-- NEW -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+                    <span class="stat-label">
+                        New
+                    </span>
+
+                    <h2>
+                        {{ new_inquiries }}
+                    </h2>
+                </div>
+
+                <div class="stat-icon stat-icon-new">
+                    !
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                Awaiting attention
+            </span>
+
+        </div>
+
+
+        <!-- IN PROGRESS -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+                    <span class="stat-label">
+                        In Progress
+                    </span>
+
+                    <h2>
+                        {{ in_progress_inquiries }}
+                    </h2>
+                </div>
+
+                <div class="stat-icon stat-icon-progress">
+                    ◷
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                Currently being handled
+            </span>
+
+        </div>
+
+
+        <!-- REPLIED -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+                    <span class="stat-label">
+                        Replied
+                    </span>
+
+                    <h2>
+                        {{ replied_inquiries }}
+                    </h2>
+                </div>
+
+                <div class="stat-icon stat-icon-replied">
+                    ✓
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                Customer contacted
+            </span>
+
+        </div>
+
+
+        <!-- CLOSED -->
+
+        <div class="stat-card">
+
+            <div class="stat-card-header">
+
+                <div>
+                    <span class="stat-label">
+                        Closed
+                    </span>
+
+                    <h2>
+                        {{ closed_inquiries }}
+                    </h2>
+                </div>
+
+                <div class="stat-icon stat-icon-closed">
+                    ✓
+                </div>
+
+            </div>
+
+            <span class="stat-description">
+                Completed inquiries
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         INQUIRIES TABLE
+    ====================================================== -->
+
+    <div class="content-card">
+
+        <div class="content-card-header">
+
+            <div>
+
+                <h2>
+                    All Inquiries
+                </h2>
+
+                <p>
+                    Customer requests submitted through the Elmuazz Technology website.
+                </p>
+
+            </div>
+
+            <div class="record-count">
+
+                {{ total_inquiries }}
+                {% if total_inquiries == 1 %}
+                    Inquiry
+                {% else %}
+                    Inquiries
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-responsive">
+
+            <table class="data-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Company
+                        </th>
+
+                        <th>
+                            Service
+                        </th>
+
+                        <th>
+                            Budget
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for inquiry in inquiries %}
+
+                    <tr>
+
+                        <!-- CUSTOMER -->
+
+                        <td>
+
+                            <div class="customer-cell">
+
+                                <div class="customer-avatar">
+                                    {{ inquiry.name|first|upper }}
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        {{ inquiry.name }}
+                                    </strong>
+
+                                    <span>
+                                        {{ inquiry.email }}
+                                    </span>
+
+                                    {% if inquiry.phone %}
+                                    <span>
+                                        {{ inquiry.phone }}
+                                    </span>
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- COMPANY -->
+
+                        <td>
+
+                            {% if inquiry.company %}
+
+                                {{ inquiry.company }}
+
+                            {% else %}
+
+                                <span class="text-muted">
+                                    Individual
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- SERVICE -->
+
+                        <td>
+
+                            <span class="service-name">
+                                {{ inquiry.get_service_display }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- BUDGET -->
+
+                        <td>
+
+                            {% if inquiry.budget %}
+
+                                {{ inquiry.get_budget_display }}
+
+                            {% else %}
+
+                                <span class="text-muted">
+                                    Not specified
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            {% if inquiry.status == "new" %}
+
+                                <span class="status-badge status-new">
+                                    New
+                                </span>
+
+                            {% elif inquiry.status == "read" %}
+
+                                <span class="status-badge status-read">
+                                    Read
+                                </span>
+
+                            {% elif inquiry.status == "in_progress" %}
+
+                                <span class="status-badge status-in-progress">
+                                    In Progress
+                                </span>
+
+                            {% elif inquiry.status == "replied" %}
+
+                                <span class="status-badge status-replied">
+                                    Replied
+                                </span>
+
+                            {% elif inquiry.status == "closed" %}
+
+                                <span class="status-badge status-closed">
+                                    Closed
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge">
+                                    {{ inquiry.get_status_display }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            <div class="date-cell">
+
+                                <strong>
+                                    {{ inquiry.created_at|date:"M d, Y" }}
+                                </strong>
+
+                                <span>
+                                    {{ inquiry.created_at|date:"h:i A" }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a
+                                href="{% url 'core:dashboard_inquiry_detail' inquiry.id %}"
+                                class="action-button"
+                            >
+                                View
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <!-- EMPTY STATE -->
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="empty-state"
+                        >
+
+                            <div class="empty-state-content">
+
+                                <div class="empty-state-icon">
+                                    ✉
+                                </div>
+
+                                <h3>
+                                    No inquiries yet
+                                </h3>
+
+                                <p>
+                                    Customer inquiries submitted
+                                    through your website will appear here.
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

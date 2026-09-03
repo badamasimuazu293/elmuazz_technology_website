@@ -1,0 +1,755 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+EMCare | Elmuazz Technology
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =========================
+     EMCare HERO
+========================== -->
+
+<section class="product-hero">
+
+    <div class="container">
+
+        <div class="product-hero-grid">
+
+            <div class="product-hero-content">
+
+                <span class="product-badge">
+                    EL-MUAZZ PRODUCT
+                </span>
+
+                <h1>
+                    EMCare
+                    <span>Healthcare Management, Simplified.</span>
+                </h1>
+
+                <p>
+                    A comprehensive digital healthcare management
+                    platform designed to connect patients, doctors,
+                    receptionists, laboratories, pharmacy,
+                    billing, and administration in one system.
+                </p>
+
+                <div class="product-hero-actions">
+
+                    <a
+                        href="{% url 'core:contact' %}"
+                        class="btn cta-primary-btn"
+                    >
+                        Request a Demo
+                        <span class="btn-arrow">→</span>
+                    </a>
+
+                    <a
+                        href="#modules"
+                        class="product-secondary-btn"
+                    >
+                        Explore Features
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Dashboard Preview -->
+
+            <div class="emcare-dashboard">
+
+                <div class="emcare-dashboard-top">
+
+                    <div class="emcare-brand-small">
+                        EMCare
+                    </div>
+
+                    <div class="emcare-profile">
+                        Admin
+                    </div>
+
+                </div>
+
+
+                <div class="emcare-dashboard-body">
+
+                    <aside class="emcare-side">
+
+                        <span class="side-active">
+                            Dashboard
+                        </span>
+
+                        <span>
+                            Patients
+                        </span>
+
+                        <span>
+                            Appointments
+                        </span>
+
+                        <span>
+                            Doctors
+                        </span>
+
+                        <span>
+                            Laboratory
+                        </span>
+
+                        <span>
+                            Pharmacy
+                        </span>
+
+                    </aside>
+
+
+                    <div class="emcare-content">
+
+                        <div class="emcare-welcome">
+                            Dashboard Overview
+                        </div>
+
+
+                        <div class="emcare-stat-grid">
+
+                            <div class="emcare-stat">
+                                <small>
+                                    Patients
+                                </small>
+
+                                <strong>
+                                    1,248
+                                </strong>
+                            </div>
+
+                            <div class="emcare-stat">
+                                <small>
+                                    Appointments
+                                </small>
+
+                                <strong>
+                                    86
+                                </strong>
+                            </div>
+
+                            <div class="emcare-stat">
+                                <small>
+                                    Doctors
+                                </small>
+
+                                <strong>
+                                    24
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="emcare-chart">
+
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     THE CHALLENGE
+========================== -->
+
+<section class="product-story">
+
+    <div class="container">
+
+        <div class="product-story-grid">
+
+            <div>
+
+                <span class="section-label">
+                    THE CHALLENGE
+                </span>
+
+                <h2>
+                    Healthcare operations
+                    shouldn't be complicated.
+                </h2>
+
+            </div>
+
+            <div>
+
+                <p>
+                    Many healthcare facilities still rely on
+                    disconnected processes, paper records,
+                    manual appointment management, and
+                    separate systems for different departments.
+                </p>
+
+                <p>
+                    This can lead to delays, duplicated work,
+                    poor communication, and difficulty accessing
+                    important patient information.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     THE SOLUTION
+========================== -->
+
+<section class="product-solution">
+
+    <div class="container">
+
+        <div class="solution-heading">
+
+            <span class="section-label">
+                THE SOLUTION
+            </span>
+
+            <h2>
+                One platform for
+                <span>the entire facility.</span>
+            </h2>
+
+            <p>
+                EMCare brings essential healthcare operations
+                together in one centralized digital platform.
+            </p>
+
+        </div>
+
+
+        <div class="solution-points">
+
+            <div>
+                <span>01</span>
+
+                <h3>
+                    Centralized Information
+                </h3>
+
+                <p>
+                    Patient and operational information can
+                    be managed from one secure system.
+                </p>
+            </div>
+
+
+            <div>
+                <span>02</span>
+
+                <h3>
+                    Connected Departments
+                </h3>
+
+                <p>
+                    Doctors, reception, laboratory, pharmacy,
+                    billing, and administration can work together.
+                </p>
+            </div>
+
+
+            <div>
+                <span>03</span>
+
+                <h3>
+                    Better Patient Experience
+                </h3>
+
+                <p>
+                    Streamlined booking, consultation,
+                    laboratory, pharmacy, and payment workflows.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MODULES
+========================== -->
+
+<section
+    class="product-modules"
+    id="modules"
+>
+
+    <div class="container">
+
+        <div class="modules-heading">
+
+            <span class="section-label">
+                KEY MODULES
+            </span>
+
+            <h2>
+                Everything your healthcare
+                facility needs.
+            </h2>
+
+        </div>
+
+
+        <div class="modules-grid">
+
+
+            <article class="module-card">
+
+                <span>01</span>
+
+                <h3>
+                    Patient Management
+                </h3>
+
+                <p>
+                    Manage patient profiles, medical information,
+                    history, and records from one centralized system.
+                </p>
+
+            </article>
+
+
+            <article class="module-card">
+
+                <span>02</span>
+
+                <h3>
+                    Appointment Management
+                </h3>
+
+                <p>
+                    Manage doctor availability, patient bookings,
+                    appointment status, and schedules.
+                </p>
+
+            </article>
+
+
+            <article class="module-card">
+
+                <span>03</span>
+
+                <h3>
+                    Doctor Dashboard
+                </h3>
+
+                <p>
+                    Give doctors access to appointments,
+                    patients, medical records, and clinical workflows.
+                </p>
+
+            </article>
+
+
+            <article class="module-card">
+
+                <span>04</span>
+
+                <h3>
+                    Laboratory
+                </h3>
+
+                <p>
+                    Manage laboratory requests, tests, results,
+                    categories, and related payments.
+                </p>
+
+            </article>
+
+
+            <article class="module-card">
+
+                <span>05</span>
+
+                <h3>
+                    Pharmacy
+                </h3>
+
+                <p>
+                    Manage prescriptions, medicines,
+                    pharmacy transactions, and payments.
+                </p>
+
+            </article>
+
+
+            <article class="module-card">
+
+                <span>06</span>
+
+                <h3>
+                    Billing & Invoices
+                </h3>
+
+                <p>
+                    Generate invoices and track payment status
+                    across healthcare services.
+                </p>
+
+            </article>
+
+
+            <article class="module-card">
+
+                <span>07</span>
+
+                <h3>
+                    Queue Management
+                </h3>
+
+                <p>
+                    Organize patient queues and help healthcare
+                    staff manage daily patient flow.
+                </p>
+
+            </article>
+
+
+            <article class="module-card">
+
+                <span>08</span>
+
+                <h3>
+                    Administration
+                </h3>
+
+                <p>
+                    Manage staff, users, departments,
+                    system settings, and operational oversight.
+                </p>
+
+            </article>
+
+
+            <article class="module-card module-card-ai">
+
+                <span>09</span>
+
+                <h3>
+                    AI Health Features
+                </h3>
+
+                <p>
+                    Intelligent healthcare features can support
+                    analysis, prediction, and patient interaction.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WORKFLOW
+========================== -->
+
+<section class="product-workflow">
+
+    <div class="container">
+
+        <div class="workflow-heading">
+
+            <span class="section-label">
+                HOW IT WORKS
+            </span>
+
+            <h2>
+                A connected healthcare
+                workflow.
+            </h2>
+
+        </div>
+
+
+        <div class="workflow">
+
+            <div class="workflow-step">
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    Reception
+                </h3>
+
+                <p>
+                    Patient information and appointments
+                    are registered and managed.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    Consultation
+                </h3>
+
+                <p>
+                    Doctors review patient information
+                    and manage consultation workflows.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    Laboratory
+                </h3>
+
+                <p>
+                    Required tests can be requested,
+                    processed, and recorded.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+
+                <span>
+                    04
+                </span>
+
+                <h3>
+                    Pharmacy
+                </h3>
+
+                <p>
+                    Prescriptions and medicine dispensing
+                    can be managed digitally.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+
+                <span>
+                    05
+                </span>
+
+                <h3>
+                    Billing
+                </h3>
+
+                <p>
+                    Services and payments are tracked
+                    through the billing system.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TECHNOLOGY
+========================== -->
+
+<section class="product-tech">
+
+    <div class="container">
+
+        <div class="product-tech-grid">
+
+            <div>
+
+                <span class="section-label">
+                    TECHNOLOGY
+                </span>
+
+                <h2>
+                    Built with modern
+                    <span>technology.</span>
+                </h2>
+
+                <p>
+                    EMCare is designed using modern software
+                    engineering principles with scalability,
+                    maintainability, security, and usability
+                    in mind.
+                </p>
+
+            </div>
+
+
+            <div class="tech-stack">
+
+                <span>
+                    Python
+                </span>
+
+                <span>
+                    Django
+                </span>
+
+                <span>
+                    JavaScript
+                </span>
+
+                <span>
+                    HTML
+                </span>
+
+                <span>
+                    CSS
+                </span>
+
+                <span>
+                    Database
+                </span>
+
+                <span>
+                    REST APIs
+                </span>
+
+                <span>
+                    AI
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCT VISION
+========================== -->
+
+<section class="product-vision">
+
+    <div class="container">
+
+        <div class="product-vision-box">
+
+            <span class="cta-label">
+                OUR VISION
+            </span>
+
+            <h2>
+                Building better digital
+                healthcare experiences.
+            </h2>
+
+            <p>
+                EMCare is being developed with a simple goal:
+                make healthcare operations more connected,
+                organized, and accessible through technology.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DEMO CTA
+========================== -->
+
+<section class="product-cta">
+
+    <div class="container">
+
+        <div class="product-cta-box">
+
+            <span class="cta-label">
+                EMCare
+            </span>
+
+            <h2>
+                Interested in bringing
+                EMCare to your facility?
+            </h2>
+
+            <p>
+                Contact Elmuazz Technology to discuss your
+                healthcare facility's requirements and explore
+                the possibilities.
+            </p>
+
+            <a
+                href="{% url 'core:contact' %}"
+                class="btn cta-primary-btn"
+            >
+                Request a Demo
+                <span class="btn-arrow">→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

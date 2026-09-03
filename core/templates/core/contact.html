@@ -1,0 +1,323 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Contact | Elmuazz Technology
+{% endblock %}
+
+
+{% block content %}
+
+<section class="contact-page">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+
+            <!-- =================================
+                 CONTACT INFORMATION
+            ================================== -->
+
+            <div class="contact-info">
+
+                <span class="section-label">
+                    GET IN TOUCH
+                </span>
+
+                <h1>
+                    Let's build something
+                    <span>great together.</span>
+                </h1>
+
+                <p>
+                    Have a business idea, software project,
+                    website, mobile application, or automation
+                    challenge?
+                </p>
+
+                <p>
+                    Tell us what you need. Our team will review
+                    your request and get back to you.
+                </p>
+
+
+                <!-- Email -->
+
+                <div class="contact-detail">
+
+                    <div class="contact-detail-icon">
+                        @
+                    </div>
+
+                    <div>
+
+                        <small>
+                            EMAIL
+                        </small>
+
+                        <a href="mailto:elmuazztechnology@gmail.com">
+                            elmuazztechnology@gmail.com
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="contact-detail">
+
+                    <div class="contact-detail-icon">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <small>
+                            LOCATION
+                        </small>
+
+                        <span>
+                            Nigeria
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WhatsApp -->
+
+                <div class="contact-detail">
+
+                    <div class="contact-detail-icon">
+                        W
+                    </div>
+
+                    <div>
+
+                        <small>
+                            QUICK CONTACT
+                        </small>
+
+                               <a
+    href="https://wa.me/2347048222848?text=Hello%20Elmuazz%20Technology,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="mobile-whatsapp"
+    aria-label="Chat with Elmuazz Technology on WhatsApp"
+>
+    <i class="bi bi-whatsapp"></i>
+    <span>WhatsApp</span>
+    <span>→</span>
+</a>
+
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            WhatsApp
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 CONTACT FORM
+            ================================== -->
+
+            <div class="contact-form-card">
+
+                <div class="form-header">
+
+                    <span>
+                        START A PROJECT
+                    </span>
+
+                    <h2>
+                        Tell us about your project.
+                    </h2>
+
+                    <p>
+                        The more information you provide,
+                        the better we can understand your needs.
+                    </p>
+
+                </div>
+
+
+                <form
+                    method="POST"
+                    action="{% url 'core:contact' %}"
+                >
+
+                    {% csrf_token %}
+
+
+                    {% if form.errors %}
+
+                        <div class="form-error">
+
+                            Please check the highlighted
+                            fields and try again.
+
+                        </div>
+
+                    {% endif %}
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="{{ form.name.id_for_label }}">
+                                Full Name
+                            </label>
+
+                            {{ form.name }}
+
+                            {% if form.name.errors %}
+                                <small class="field-error">
+                                    {{ form.name.errors.0 }}
+                                </small>
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="{{ form.company.id_for_label }}"
+                            >
+                                Company / Organization
+                            </label>
+
+                            {{ form.company }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="{{ form.email.id_for_label }}"
+                            >
+                                Email Address
+                            </label>
+
+                            {{ form.email }}
+
+                            {% if form.email.errors %}
+                                <small class="field-error">
+                                    {{ form.email.errors.0 }}
+                                </small>
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="{{ form.phone.id_for_label }}"
+                            >
+                                Phone Number
+                            </label>
+
+                            {{ form.phone }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="{{ form.service.id_for_label }}"
+                            >
+                                Service Required
+                            </label>
+
+                            {{ form.service }}
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="{{ form.budget.id_for_label }}"
+                            >
+                                Estimated Budget
+                            </label>
+
+                            {{ form.budget }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="{{ form.message.id_for_label }}"
+                        >
+                            Project Details
+                        </label>
+
+                        {{ form.message }}
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="form-submit"
+                    >
+
+                        Send Project Request
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <p class="form-note">
+                        Your information will only be used
+                        to respond to your project inquiry.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,415 @@
+{% extends "core/dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Inquiry Details | Elmuazz Technology
+{% endblock %}
+
+{% block page_label %}
+    Inquiry Details
+{% endblock %}
+
+{% block dashboard_content %}
+
+<section class="dashboard-page">
+
+    <div class="container">
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <span class="dashboard-label">
+                    ELMUAZZ TECHNOLOGY
+                </span>
+
+                <h1>
+                    Inquiry Details
+                </h1>
+
+                <p>
+                    Review customer information and manage
+                    this project inquiry.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <a
+                    href="{% url 'core:dashboard_inquiries' %}"
+                    class="dashboard-action"
+                >
+                    ← Back to Inquiries
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CUSTOMER + STATUS
+        ================================================== -->
+
+        <div class="inquiry-detail-grid">
+
+
+            <!-- CUSTOMER INFORMATION -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <span class="dashboard-label">
+                            CUSTOMER
+                        </span>
+
+                        <h2>
+                            {{ inquiry.name }}
+                        </h2>
+
+                    </div>
+
+                    <span
+                        class="status-badge status-{{ inquiry.status }}"
+                    >
+                        {{ inquiry.get_status_display }}
+                    </span>
+
+                </div>
+
+
+                <div class="inquiry-information">
+
+                    <div class="information-item">
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong>
+                            <a href="mailto:{{ inquiry.email }}">
+                                {{ inquiry.email }}
+                            </a>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="information-item">
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong>
+                            <a href="tel:{{ inquiry.phone }}">
+                                {{ inquiry.phone }}
+                            </a>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="information-item">
+
+                        <span>
+                            Company
+                        </span>
+
+                        <strong>
+                            {% if inquiry.company %}
+                                {{ inquiry.company }}
+                            {% else %}
+                                Not provided
+                            {% endif %}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="information-item">
+
+                        <span>
+                            Submitted
+                        </span>
+
+                        <strong>
+                            {{ inquiry.created_at|date:"M d, Y — h:i A" }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATUS MANAGEMENT -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <span class="dashboard-label">
+                            INQUIRY STATUS
+                        </span>
+
+                        <h2>
+                            Manage Status
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    method="POST"
+                    action="{% url 'core:dashboard_inquiry_status' inquiry.id %}"
+                    class="status-form"
+                >
+
+                    {% csrf_token %}
+
+                    <label for="status">
+                        Current Status
+                    </label>
+
+                    <select
+                        name="status"
+                        id="status"
+                        class="form-control"
+                    >
+
+                        {% for value, label in inquiry.STATUS_CHOICES %}
+
+                            <option
+                                value="{{ value }}"
+                                {% if inquiry.status == value %}
+                                    selected
+                                {% endif %}
+                            >
+                                {{ label }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+
+                    <button
+                        type="submit"
+                        class="dashboard-primary-button"
+                    >
+                        Update Status
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PROJECT INFORMATION
+        ================================================== -->
+
+        <div class="dashboard-card inquiry-project-card">
+
+            <div class="dashboard-card-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        PROJECT INFORMATION
+                    </span>
+
+                    <h2>
+                        {{ inquiry.get_service_display }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-information-grid">
+
+
+                <div class="information-item">
+
+                    <span>
+                        Requested Service
+                    </span>
+
+                    <strong>
+                        {{ inquiry.get_service_display }}
+                    </strong>
+
+                </div>
+
+
+                <div class="information-item">
+
+                    <span>
+                        Estimated Budget
+                    </span>
+
+                    <strong>
+
+                        {% if inquiry.budget %}
+
+                            {{ inquiry.get_budget_display }}
+
+                        {% else %}
+
+                            Not specified
+
+                        {% endif %}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CUSTOMER MESSAGE
+        ================================================== -->
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        CUSTOMER MESSAGE
+                    </span>
+
+                    <h2>
+                        Project Request
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="inquiry-message">
+
+                {{ inquiry.message|linebreaks }}
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             REPLY
+        ================================================== -->
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        COMMUNICATION
+                    </span>
+
+                    <h2>
+                        Reply to Customer
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            {% if inquiry.reply %}
+
+                <div class="previous-reply">
+
+                    <span>
+                        Previous Reply
+                    </span>
+
+                    <div>
+                        {{ inquiry.reply|linebreaks }}
+                    </div>
+
+                    {% if inquiry.replied_at %}
+
+                        <small>
+                            Replied
+                            {{ inquiry.replied_at|date:"M d, Y — h:i A" }}
+                        </small>
+
+                    {% endif %}
+
+                </div>
+
+            {% endif %}
+
+
+            <form
+                method="POST"
+                action="{% url 'core:dashboard_inquiry_reply' inquiry.id %}"
+                class="reply-form"
+            >
+
+                {% csrf_token %}
+
+                <label for="reply">
+                    Your Response
+                </label>
+
+                <textarea
+                    name="reply"
+                    id="reply"
+                    rows="8"
+                    class="form-control"
+                    placeholder="Write your response to the customer..."
+                    required
+                ></textarea>
+
+
+                <div class="reply-actions">
+
+                    <button
+                        type="submit"
+                        class="dashboard-primary-button"
+                    >
+                        Send Reply →
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}

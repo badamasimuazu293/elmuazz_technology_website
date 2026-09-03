@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Elmuazz Technology
+    </title>
+
+</head>
+
+
+<body
+    style="
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7fb;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #1f2937;
+    "
+>
+
+
+<table
+    width="100%"
+    cellpadding="0"
+    cellspacing="0"
+    border="0"
+    style="background-color: #f4f7fb; padding: 40px 15px;"
+>
+
+<tr>
+
+<td align="center">
+
+
+<table
+    width="600"
+    cellpadding="0"
+    cellspacing="0"
+    border="0"
+    style="
+        max-width: 600px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+    "
+>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<tr>
+
+<td
+    style="
+        background-color: #0b3d91;
+        padding: 30px;
+        text-align: center;
+    "
+>
+
+    <h1
+        style="
+            margin: 0;
+            color: #ffffff;
+            font-size: 26px;
+            letter-spacing: 1px;
+        "
+    >
+        ELMUAZZ TECHNOLOGY
+    </h1>
+
+    <p
+        style="
+            margin: 8px 0 0;
+            color: #dbeafe;
+            font-size: 14px;
+        "
+    >
+        Empowering Business with Technology
+    </p>
+
+</td>
+
+</tr>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<tr>
+
+<td
+    style="
+        padding: 40px 35px;
+    "
+>
+
+    <h2
+        style="
+            margin-top: 0;
+            color: #111827;
+            font-size: 22px;
+        "
+    >
+        Hello {{ inquiry.name }},
+    </h2>
+
+
+    <p
+        style="
+            font-size: 15px;
+            line-height: 1.7;
+        "
+    >
+        Thank you for contacting
+        <strong>Elmuazz Technology</strong>.
+    </p>
+
+
+    <p
+        style="
+            font-size: 15px;
+            line-height: 1.7;
+        "
+    >
+        We have reviewed your inquiry regarding:
+    </p>
+
+
+    <!-- SERVICE -->
+
+    <div
+        style="
+            background-color: #f1f5f9;
+            border-left: 4px solid #0b3d91;
+            padding: 15px 18px;
+            margin: 25px 0;
+        "
+    >
+
+        <strong>
+            {{ inquiry.get_service_display }}
+        </strong>
+
+        {% if inquiry.company %}
+
+        <br>
+
+        <span
+            style="
+                color: #64748b;
+                font-size: 14px;
+            "
+        >
+            {{ inquiry.company }}
+        </span>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- RESPONSE -->
+
+    <h3
+        style="
+            color: #111827;
+            font-size: 18px;
+        "
+    >
+        Our Response
+    </h3>
+
+
+    <div
+        style="
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        "
+    >
+
+        <p
+            style="
+                margin: 0;
+                font-size: 15px;
+                line-height: 1.8;
+                white-space: pre-line;
+            "
+        >
+            {{ reply_message }}
+        </p>
+
+    </div>
+
+
+    <p
+        style="
+            margin-top: 30px;
+            font-size: 15px;
+            line-height: 1.7;
+        "
+    >
+        If you have any additional questions or would like
+        to discuss your project further, please feel free
+        to contact us.
+    </p>
+
+
+    <p
+        style="
+            font-size: 15px;
+            line-height: 1.7;
+        "
+    >
+        We look forward to working with you.
+    </p>
+
+
+    <!-- SIGNATURE -->
+
+    <p
+        style="
+            margin-top: 30px;
+            line-height: 1.7;
+        "
+    >
+
+        Best regards,<br>
+
+        <strong>
+            Elmuazz Technology
+        </strong>
+
+        <br>
+
+        <span
+            style="
+                color: #64748b;
+                font-size: 14px;
+            "
+        >
+            Empowering Business with Technology
+        </span>
+
+        <br>
+
+        <span
+            style="
+                color: #64748b;
+                font-size: 14px;
+            "
+        >
+            Kano, Nigeria
+        </span>
+
+    </p>
+
+</td>
+
+</tr>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<tr>
+
+<td
+    style="
+        background-color: #f8fafc;
+        border-top: 1px solid #e5e7eb;
+        padding: 22px;
+        text-align: center;
+    "
+>
+
+    <p
+        style="
+            margin: 0;
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.6;
+        "
+    >
+        © {% now "Y" %} Elmuazz Technology.
+        All rights reserved.
+    </p>
+
+    <p
+        style="
+            margin: 5px 0 0;
+            color: #94a3b8;
+            font-size: 12px;
+        "
+    >
+        Kano, Nigeria
+    </p>
+
+</td>
+
+</tr>
+
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+
+</body>
+
+</html>
