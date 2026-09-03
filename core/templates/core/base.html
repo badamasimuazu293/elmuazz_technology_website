@@ -122,17 +122,12 @@
         <!-- MOBILE MENU BUTTON -->
 
         <button
-            class="mobile-menu-button"
-            id="mobileMenuButton"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+>
     </div>
 
 
@@ -140,9 +135,10 @@
          MOBILE NAVIGATION
     ========================================== -->
 
-    <div
+    <nav
         class="mobile-navigation"
         id="mobileNavigation"
+        aria-label="Mobile navigation"
     >
 
         <a href="{% url 'core:home' %}">
@@ -180,7 +176,7 @@
     <span>→</span>
 </a>
 
-    </div>
+</nav>
 
 </header>
 
