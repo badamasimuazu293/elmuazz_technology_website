@@ -365,6 +365,9 @@ select {
 
     border-top: 1px solid var(--border);
 }
+.mobile-navigation.open {
+    display: block;
+}
 
 .mobile-nav-link {
     display: block;
@@ -11642,4 +11645,5 @@ main {
     .mobile-navigation.open {
         display: block;
     }
+    
 }
