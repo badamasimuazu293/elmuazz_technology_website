@@ -11646,3 +11646,21 @@ main {
     }
     
 }
+
+@media (max-width: 900px) {
+    /* Hide desktop nav, show mobile button */
+    .desktop-nav,
+    .nav-action {
+        display: none !important;
+    }
+
+    .mobile-menu-button {
+        display: flex !important;
+    }
+
+    /* Shows the navigation when JavaScript toggles .active */
+    .mobile-nav.active {
+        display: flex !important;
+        flex-direction: column;
+    }
+}

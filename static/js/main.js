@@ -4,150 +4,90 @@ document.addEventListener("DOMContentLoaded", function () {
        ELEMENTS
     ========================================= */
 
-    const menuButton =
-        document.getElementById("mobileMenuButton");
-
-    const mobileNavigation =
-        document.getElementById("mobileNavigation");
-
-    const siteHeader =
-        document.querySelector(".site-header");
+    const menuButton = document.getElementById("mobileMenuButton");
+    const mobileNavigation = document.getElementById("mobileNavigation");
+    const siteHeader = document.querySelector(".site-header");
 
 
     /* =========================================
-       MOBILE MENU
+       HELPER FUNCTIONS
+    ========================================= */
+
+    function setMenuState(isOpen) {
+        if (!mobileNavigation || !menuButton) return;
+
+        // Toggle visibility classes on both menu and button (for CSS animation)
+        mobileNavigation.classList.toggle("active", isOpen);
+        menuButton.classList.toggle("active", isOpen);
+
+        // Update ARIA attributes
+        menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menuButton.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    }
+
+    function closeMenu() {
+        setMenuState(false);
+    }
+
+
+    /* =========================================
+       MOBILE MENU TOGGLE
     ========================================= */
 
     if (menuButton && mobileNavigation) {
 
         menuButton.addEventListener("click", function (event) {
-
             event.preventDefault();
             event.stopPropagation();
 
-            const isOpen =
-                mobileNavigation.classList.toggle("open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
-
-            menuButton.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close navigation menu"
-                    : "Open navigation menu"
-            );
-
+            const isCurrentlyOpen = mobileNavigation.classList.contains("active");
+            setMenuState(!isCurrentlyOpen);
         });
 
 
-        /* =========================================
-           MOBILE NAVIGATION LINKS
-        ========================================= */
-
-        const mobileLinks =
-            mobileNavigation.querySelectorAll("a");
-
-
+        /* Close on link click */
+        const mobileLinks = mobileNavigation.querySelectorAll("a");
         mobileLinks.forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                /*
-                 * Do not prevent the default action.
-                 * Django navigation links must be
-                 * allowed to navigate normally.
-                 */
-
-                mobileNavigation.classList.remove("open");
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
-
-            });
-
+            link.addEventListener("click", closeMenu);
         });
 
     }
 
 
     /* =========================================
-       CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+       GLOBAL DISMISSALS (CLICK OUTSIDE & ESCAPE)
     ========================================= */
 
     document.addEventListener("click", function (event) {
+        if (!menuButton || !mobileNavigation) return;
 
-        if (!menuButton || !mobileNavigation) {
-            return;
+        const clickedInsideMenu = mobileNavigation.contains(event.target);
+        const clickedButton = menuButton.contains(event.target);
+
+        if (!clickedInsideMenu && !clickedButton) {
+            closeMenu();
         }
+    });
 
-        const clickedInsideMenu =
-            mobileNavigation.contains(event.target);
-
-        const clickedButton =
-            menuButton.contains(event.target);
-
-        if (
-            !clickedInsideMenu &&
-            !clickedButton &&
-            mobileNavigation.classList.contains("open")
-        ) {
-
-            mobileNavigation.classList.remove("open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuButton.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
-
+    // Close menu when pressing Escape key
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeMenu();
         }
-
     });
 
 
     /* =========================================
-       CLOSE MENU WHEN WINDOW RESIZES
+       RESIZE LISTENER
     ========================================= */
 
     window.addEventListener("resize", function () {
-
-        if (
-            window.innerWidth > 850 &&
-            mobileNavigation
-        ) {
-
-            mobileNavigation.classList.remove("open");
-
-            if (menuButton) {
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
-
-            }
-
+        if (window.innerWidth > 850) {
+            closeMenu();
         }
-
     });
 
 
@@ -156,33 +96,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ========================================= */
 
     if (siteHeader) {
-
         function updateHeader() {
-
-            if (window.scrollY > 20) {
-
-                siteHeader.classList.add("scrolled");
-
-            } else {
-
-                siteHeader.classList.remove("scrolled");
-
-            }
-
+            siteHeader.classList.toggle("scrolled", window.scrollY > 20);
         }
 
-
-        window.addEventListener(
-            "scroll",
-            updateHeader,
-            { passive: true }
-        );
-
-
-        /* Run once when page loads */
-
+        window.addEventListener("scroll", updateHeader, { passive: true });
         updateHeader();
-
     }
 
 });
