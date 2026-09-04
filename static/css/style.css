@@ -529,6 +529,10 @@ select {
         );
 
     padding: 110px 0 100px;
+
+    padding-top: 10px;
+    
+    margin-top: 0;
 }
 
 .hero-container {
@@ -543,7 +547,10 @@ select {
 
     align-items: center;
 
-    gap: 70px;
+    gap: 60px;
+
+    padding-top: 0;
+    margin-top: 0;
 }
 
 
