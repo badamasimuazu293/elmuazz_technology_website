@@ -530,7 +530,7 @@ select {
 
     padding: 110px 0 100px;
 
-    padding-top: 10px;
+    padding-top: 5px;
 
     margin-top: 0;
 }
@@ -12139,7 +12139,7 @@ main {
 
 @media (max-width: 768px){
     .hero {
-        padding-top: 10px;
+        padding-top: 5px;
         margin-top: 0;
     }
 
