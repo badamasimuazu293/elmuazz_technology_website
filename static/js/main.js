@@ -1,8 +1,24 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    const menuButton = document.getElementById("mobileMenuButton");
-    const mobileNavigation = document.getElementById("mobileNavigation");
-    const siteHeader = document.querySelector(".site-header");
+    console.log("Elmuazz main.js loaded");
+
+    const menuButton =
+        document.getElementById("mobileMenuButton");
+
+    const mobileNavigation =
+        document.getElementById("mobileNavigation");
+
+    const siteHeader =
+        document.querySelector(".site-header");
+
+
+    /* =========================================
+       CHECK ELEMENTS
+    ========================================= */
+
+    console.log("Menu button:", menuButton);
+    console.log("Mobile navigation:", mobileNavigation);
 
 
     /* =========================================
@@ -11,38 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (menuButton && mobileNavigation) {
 
-        menuButton.addEventListener("click", function (event) {
+        menuButton.addEventListener("click", function () {
 
-            event.preventDefault();
-            event.stopPropagation();
+            console.log("Mobile menu button clicked");
 
             const isOpen =
-                mobileNavigation.classList.toggle("open");
-
-            menuButton.classList.toggle("active", isOpen);
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
-
-            console.log(
-                "Mobile menu:",
-                isOpen ? "OPEN" : "CLOSED"
-            );
-
-        });
+                mobileNavigation.classList.contains("open");
 
 
-        /* Close menu when clicking a navigation link */
-
-        const mobileLinks =
-            mobileNavigation.querySelectorAll("a");
-
-
-        mobileLinks.forEach(function (link) {
-
-            link.addEventListener("click", function () {
+            if (isOpen) {
 
                 mobileNavigation.classList.remove("open");
 
@@ -53,9 +46,78 @@ document.addEventListener("DOMContentLoaded", function () {
                     "false"
                 );
 
+                console.log("Mobile menu CLOSED");
+
+            } else {
+
+                mobileNavigation.classList.add("open");
+
+                menuButton.classList.add("active");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                console.log("Mobile menu OPENED");
+
+            }
+
+            console.log(
+                "Navigation class:",
+                mobileNavigation.className
+            );
+
+        });
+
+
+        /* =====================================
+           CLOSE MENU AFTER LINK CLICK
+        ===================================== */
+
+        const mobileLinks =
+            mobileNavigation.querySelectorAll("a");
+
+
+        mobileLinks.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                /*
+                 * Don't close WhatsApp unnecessarily.
+                 * Normal navigation links close the menu.
+                 */
+
+                if (
+                    !link.classList.contains(
+                        "mobile-whatsapp"
+                    )
+                ) {
+
+                    mobileNavigation.classList.remove(
+                        "open"
+                    );
+
+                    menuButton.classList.remove(
+                        "active"
+                    );
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
             });
 
         });
+
+    } else {
+
+        console.error(
+            "Mobile menu elements were NOT found."
+        );
 
     }
 
@@ -66,26 +128,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (siteHeader) {
 
-        function updateHeader() {
+        function handleHeaderScroll() {
 
             if (window.scrollY > 20) {
 
-                siteHeader.classList.add("scrolled");
+                siteHeader.classList.add(
+                    "scrolled"
+                );
 
             } else {
 
-                siteHeader.classList.remove("scrolled");
+                siteHeader.classList.remove(
+                    "scrolled"
+                );
 
             }
 
         }
 
+
         window.addEventListener(
             "scroll",
-            updateHeader
+            handleHeaderScroll
         );
 
-        updateHeader();
+
+        handleHeaderScroll();
 
     }
 
