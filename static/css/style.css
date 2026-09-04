@@ -4124,7 +4124,7 @@ select {
 .footer-logo {
     display: inline-flex;
 
-    flex-direction: column;
+    flex-direction: row;
 
     color: var(--white);
 
@@ -4133,6 +4133,15 @@ select {
     font-weight: 800;
 
     line-height: 1;
+
+    align-items: center;
+}
+.footer-logo img{
+    width: 120px;
+    height: 50px;
+    margin-bottom: 8px;
+    object-fit: contain;
+    display: block;
 }
 
 .footer-logo span {
