@@ -228,29 +228,32 @@ select {
    NAVIGATION CONTAINER
 ========================================= */
 
-.nav-container {
+.header-container {
+
     min-height: 80px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 32px;
-}
 
+}
 
 /* =========================================
    LOGO
 ========================================= */
 
-.logo {
+.site-logo {
     display: flex;
     align-items: center;
 
     flex-shrink: 0;
 }
 
-.logo img {
+.site-logo img {
     width: 170px;
     height: auto;
 }
@@ -260,47 +263,62 @@ select {
    DESKTOP NAV
 ========================================= */
 
-.desktop-nav {
+/* =========================================
+   DESKTOP NAV
+========================================= */
+
+.main-navigation {
+
     display: flex;
+
     align-items: center;
 
     gap: 30px;
 
     margin-left: auto;
+
 }
 
 .nav-link {
+
     position: relative;
 
     color: var(--text-gray);
 
     font-size: 0.95rem;
+
     font-weight: 500;
 
     transition: color 0.2s ease;
+
 }
 
 .nav-link:hover,
 .nav-link.active {
+
     color: var(--primary);
+
 }
 
 .nav-link.active::after {
+
     content: "";
 
     position: absolute;
 
     left: 0;
+
     bottom: -8px;
 
     width: 100%;
+
     height: 2px;
 
     background: var(--primary);
 
     border-radius: 10px;
-}
 
+}
 
 /* =========================================
    NAV ACTION
@@ -357,60 +375,142 @@ select {
 }
 
 /* =========================================
-   MOBILE NAV
+   MOBILE NAVIGATION
 ========================================= */
 
-.mobile-nav {
+.mobile-navigation {
+
     display: none;
-    padding: 20px;
-    background: var(--white);
-    border-top: 1px solid var(--border);
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
     width: 100%;
+
+    padding: 20px;
+
+    background: var(--white);
+
+    border-top: 1px solid var(--border);
+
+    box-shadow: var(--shadow-md);
+
+    z-index: 9999;
+
 }
 
-.mobile-nav.active {
+/* JavaScript adds .open */
+
+.mobile-navigation.open {
+
     display: flex;
+
     flex-direction: column;
+
 }
 
-.mobile-nav-link {
+/* Mobile navigation links */
+
+.mobile-navigation > a {
+
     display: block;
-    padding: 14px 0;
+
+    width: 100%;
+
+    padding: 15px 10px;
+
     color: var(--text-dark);
+
     font-weight: 500;
+
     border-bottom: 1px solid var(--border);
-    transition: color 0.2s ease;
+
+    transition: color 0.2s ease,
+                background 0.2s ease;
+
 }
 
-.mobile-nav-link:hover {
+.mobile-navigation > a:hover {
+
     color: var(--primary);
+
+    background: rgba(10, 88, 247, 0.05);
+
 }
 
-.mobile-cta {
-    margin-top: 20px;
+/* Mobile WhatsApp */
+
+.mobile-navigation .mobile-whatsapp {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    padding: 13px 18px;
+
+    background: #25D366;
+
+    color: var(--white);
+
+    border-radius: var(--radius-md);
+
+    border: none;
+
 }
+
+.mobile-navigation .mobile-whatsapp:hover {
+
+    color: var(--white);
+
+    background: #1ebe5d;
+
+}
+
 /* =========================================
    MOBILE RESPONSIVE
 ========================================= */
 
 @media (max-width: 900px) {
 
-    .desktop-nav,
-    .nav-action {
+    .main-navigation {
+
         display: none;
+
+    }
+
+    .header-whatsapp {
+
+        display: none;
+
     }
 
     .mobile-menu-button {
+
         display: flex;
+
     }
 
-    .mobile-nav.active {
-        display: block;
-    }
+    .site-logo img {
 
-    .logo img {
         width: 155px;
+
     }
+
+    .header-container {
+
+        min-height: 80px;
+
+    }
+
 }
 /* =========================================
    HERO SECTION
