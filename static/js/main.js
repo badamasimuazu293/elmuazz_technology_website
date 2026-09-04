@@ -1,16 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const menuButton = document.getElementById(
-        "mobileMenuButton"
-    );
-
-    const mobileNavigation = document.getElementById(
-        "mobileNavigation"
-    );
-
-    const siteHeader = document.querySelector(
-        ".site-header"
-    );
+    const menuButton = document.getElementById("mobileMenuButton");
+    const mobileNavigation = document.getElementById("mobileNavigation");
+    const siteHeader = document.querySelector(".site-header");
 
 
     /* =========================================
@@ -19,30 +11,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (menuButton && mobileNavigation) {
 
-        menuButton.addEventListener("click", function () {
+        menuButton.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
 
             const isOpen =
                 mobileNavigation.classList.toggle("open");
+
+            menuButton.classList.toggle("active", isOpen);
 
             menuButton.setAttribute(
                 "aria-expanded",
                 isOpen ? "true" : "false"
             );
 
-            menuButton.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close navigation menu"
-                    : "Open navigation menu"
+            console.log(
+                "Mobile menu:",
+                isOpen ? "OPEN" : "CLOSED"
             );
 
         });
 
 
-        /* Close menu after clicking a link */
+        /* Close menu when clicking a navigation link */
 
         const mobileLinks =
             mobileNavigation.querySelectorAll("a");
+
 
         mobileLinks.forEach(function (link) {
 
@@ -50,14 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 mobileNavigation.classList.remove("open");
 
+                menuButton.classList.remove("active");
+
                 menuButton.setAttribute(
                     "aria-expanded",
                     "false"
-                );
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
                 );
 
             });
@@ -68,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       HEADER SCROLL
+       HEADER SCROLL EFFECT
     ========================================= */
 
     if (siteHeader) {
@@ -76,17 +69,20 @@ document.addEventListener("DOMContentLoaded", function () {
         function updateHeader() {
 
             if (window.scrollY > 20) {
+
                 siteHeader.classList.add("scrolled");
+
             } else {
+
                 siteHeader.classList.remove("scrolled");
+
             }
 
         }
 
         window.addEventListener(
             "scroll",
-            updateHeader,
-            { passive: true }
+            updateHeader
         );
 
         updateHeader();

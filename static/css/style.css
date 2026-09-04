@@ -11972,3 +11972,149 @@ main {
         height: 42px !important;
     }
 }
+
+/* =========================================
+   MOBILE NAVIGATION - FINAL OVERRIDE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .site-header {
+        position: sticky;
+        z-index: 99999;
+    }
+
+    .mobile-navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+
+        background: #ffffff;
+
+        border-top: 1px solid var(--border);
+
+        padding: 20px;
+
+        z-index: 100000;
+
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .mobile-navigation.open {
+        display: flex;
+    }
+
+    .mobile-navigation a {
+        display: block;
+        width: 100%;
+
+        padding: 14px 0;
+
+        color: var(--text-dark) !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .mobile-navigation .mobile-whatsapp {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        margin-top: 15px;
+
+        padding: 14px 18px;
+
+        background: #25D366;
+        color: #ffffff !important;
+
+        border-radius: 8px;
+    }
+
+    .hero,
+    .hero-container,
+    .hero-content,
+    .hero-visual {
+        /* Prevent homepage sections from covering the menu */
+        z-index: auto;
+    }
+}
+
+/* =========================================
+   MOBILE NAVIGATION - FINAL
+========================================= */
+
+@media (max-width: 900px) {
+
+    .mobile-navigation {
+        display: none;
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        background: #ffffff;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        border-top: 1px solid var(--border);
+
+        box-shadow:
+            0 10px 30px rgba(15, 23, 42, 0.12);
+
+        z-index: 99999;
+    }
+
+
+    .mobile-navigation.open {
+        display: flex;
+    }
+
+
+    .mobile-navigation > a {
+        display: block;
+
+        width: 100%;
+
+        padding: 14px 0;
+
+        color: var(--text-dark);
+
+        text-decoration: none;
+    }
+
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+
+    .mobile-whatsapp {
+        display: flex !important;
+
+        align-items: center;
+
+        gap: 10px;
+
+        margin-top: 15px;
+
+        padding: 14px 18px !important;
+
+        background: #25D366;
+
+        color: #ffffff !important;
+
+        border-radius: 8px;
+    }
+
+}
